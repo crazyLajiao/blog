@@ -8,11 +8,13 @@ $(function() {
     $loginBox.find('a').on('click',function() {
         $registerBox.show()
         $loginBox.hide()
+        console.log('注册')
     })
     //切换到登录面板
     $registerBox.find('a').on('click',function() {
         $loginBox.show()
         $registerBox.hide()
+        console.log('登录')
     })
 
     //注册

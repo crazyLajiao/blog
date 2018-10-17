@@ -7,13 +7,15 @@
     <link href="/public/css/main.css" rel="stylesheet" type="text/css">
     <link href="/public/fontAwesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <script src="/public/js/jquery-1.12.4.min.js"></script>
+    <script src="/public/js/index.js"></script>
 </head>
 
 <body>
 
 <header>
     <div class="backimg"><img src="/public/images/IMG_0293.JPG"></div>
-    <div class="logo"><span></span><img src="/public/images/00002637.png"></div>
+    <div class="logo"><span></span><img src="/public/images/00002637.png" style="border-radius: 50%"></div>
+
 </header>
 
 <nav>
@@ -48,13 +50,13 @@
             <div class="title"><span>用户信息</span></div>
             <p><span class="colDark">{{userInfo.username}}</span></p>
             {% if userInfo.isAdmin %}
-            <p><span class="colDanger">Hello，admin!</span>    <a href="/admin">进入管理界面</a></p>
+            <p><span class="colDanger">Hello，admin!</span> <a href="/admin" class="enterManagePage">进入管理界面</a></p>
             {% else %}
             <p><span class="colDanger">Hello，welcome to my blog!</span></p>
             {% endif %}
 
 
-            <p><span class="colDark"><a href="javascript:;" id="logout">退出</a></span></p>
+            <p><span class="colDark"><button id="logout">退出</button></span></p>
         </div>
         {% else %}
         <div class="rightBox" id="loginBox" >
@@ -66,7 +68,7 @@
             <p class="colWarning textCenter"></p>
         </div>
 
-        <div class="rightBox" id="registerBox" >
+        <div class="rightBox" id="registerBox" style="display: none;">
             <div class="title"><span>注册</span></div>
             <div class="line"><span class="colDark">用户名：</span><input name="username" type="text" /></div>
             <div class="line"><span class="colDark">密码：</span><input name="password" type="password" /></div>
@@ -78,9 +80,9 @@
         {% endif %}
 
         <div class="rightBox">
-            <div class="title"><span>社区</span></div>
-            <p><a href="http://www.miaov.com" target="_blank" class="colDanger">妙味课堂</a></p>
-            <p><a href="http://bbs.miaov.com" target="_blank" class="colDanger">妙味茶馆</a></p>
+            <div class="title"><span>小牛学习</span></div>
+            <p><a href="javascript:;" target="_blank" class="colDanger">小牛课堂</a></p>
+            <p><a href="javascript:;" target="_blank" class="colDanger">小牛笔记</a></p>
         </div>
     </div>
 

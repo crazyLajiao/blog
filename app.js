@@ -27,7 +27,10 @@ app.use(function(req,res,next) {
             req.userInfo = JSON.parse(req.cookies.get('userInfo'))
             // 判断当前登录用户是否是管理员
             User.findById(req.userInfo._id).then(function(userInfo) {
-                req.userInfo.isAdmin = Boolean(userInfo.isAdmin)
+                if(userInfo){
+                    req.userInfo.isAdmin = Boolean(userInfo.isAdmin)
+                }
+
                 next()
             })
         }catch(e){
