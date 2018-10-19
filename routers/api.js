@@ -1,7 +1,9 @@
 let express = require('express'),
     router = express.Router(),
     User = require('../models/User'),  //返回是构造函数
-    Content = require('../models/Content')
+    Content = require('../models/Content'),
+    crypto = require('crypto'),
+    md5 = require('../models/md5')
 
 
 //统一返回格式
@@ -15,10 +17,10 @@ router.use((req,res,next)=>{
 
 //用户注册
 router.post('/user/register',(req,res,next)=>{
-    console.log(req.body)
+    // console.log(req.body)
     var username = req.body.username
-    var password = req.body.password
-    var repassword = req.body.repassword
+    var password = md5(md5(req.body.password))
+    var repassword = md5(md5(req.body.repassword))
 
     if(username==''){
         responseData.code = 1
@@ -66,8 +68,7 @@ router.post('/user/register',(req,res,next)=>{
 //用户登录
 router.post('/user/login',(req,res)=>{
     var username = req.body.username
-    var password = req.body.password
-    // console.log(username,password)
+    var password = md5(md5(req.body.password))
     if(username==''||password==''){
         responseData.code = 1
         responseData.message = '用户名或密码不能为空'
